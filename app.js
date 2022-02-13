@@ -16,11 +16,11 @@ function generatePin() {
   document.getElementById("display-pin").value = pin;
 }
 
+// Num-pad function
 document.getElementById("keypad").addEventListener("click", function (event) {
   const number = event.target.innerText;
   const calcInput = document.getElementById("input-numbers");
   if (isNaN(number)) {
-    console.log(number);
     if (number == "C") {
       calcInput.value = "";
     }
@@ -30,3 +30,18 @@ document.getElementById("keypad").addEventListener("click", function (event) {
     calcInput.value = newNumber;
   }
 });
+
+// Match pin with submit
+function verifyPin() {
+  const pin = document.getElementById("display-pin").value;
+  const submitted = document.getElementById("input-numbers").value;
+  const successMsg = document.getElementById("very-success");
+  const failMsg = document.getElementById("very-fail");
+  if (pin == submitted) {
+    successMsg.style.display = "block";
+    failMsg.style.display = "none";
+  } else {
+    successMsg.style.display = "none";
+    failMsg.style.display = "block";
+  }
+}
